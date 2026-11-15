@@ -17,12 +17,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <style>
 
-:root{--navy:#1f3864;--gold:#f2c14e;--cream:#faf6ef;--ink:#22304a;--sub:#7a8699;--line:#f1ecdf;--plus:#2e8b6e;--minus:#d1603d;--nav:60px}
+:root{--sat:env(safe-area-inset-top,0px);--sab:env(safe-area-inset-bottom,0px);--navy:#1f3864;--gold:#f2c14e;--cream:#faf6ef;--ink:#22304a;--sub:#7a8699;--line:#f1ecdf;--plus:#2e8b6e;--minus:#d1603d;--nav:60px}
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{background:#efe9dd;color:var(--ink);font-family:"Noto Sans JP","Noto Sans CJK JP","Hiragino Sans",sans-serif;font-size:14px;line-height:1.5}
-.phone{width:100%;max-width:430px;min-height:100vh;margin:0 auto;background:var(--cream);box-shadow:0 0 40px rgba(31,56,100,.25);padding-bottom:calc(var(--nav) + 8px + env(safe-area-inset-bottom));position:relative}
-.phone.wbar{padding-bottom:calc(var(--nav) + 68px + env(safe-area-inset-bottom))}
-.header{position:sticky;top:0;z-index:5;background:linear-gradient(135deg,#131f3a 0%,#1f3864 55%,#33598c 100%);color:#fff;height:50px;padding:0 14px;border-radius:0 0 18px 18px;overflow:hidden;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 10px rgba(19,31,58,.25)}
+.phone{width:100%;max-width:430px;min-height:100vh;margin:0 auto;background:var(--cream);box-shadow:0 0 40px rgba(31,56,100,.25);padding-bottom:calc(var(--nav) + 8px + var(--sab));position:relative}
+.phone.wbar{padding-bottom:calc(var(--nav) + 68px + var(--sab))}
+.header{position:sticky;top:0;z-index:5;background:linear-gradient(135deg,#131f3a 0%,#1f3864 55%,#33598c 100%);color:#fff;height:calc(50px + var(--sat));padding:var(--sat) 14px 0;border-radius:0 0 18px 18px;overflow:hidden;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 10px rgba(19,31,58,.25)}
 .header::before{content:"";position:absolute;inset:0;opacity:.8;pointer-events:none;background-image:
 radial-gradient(1.5px 1.5px at 20px 12px,#ffe9a8 60%,transparent 61%),radial-gradient(1.2px 1.2px at 130px 36px,#fff 60%,transparent 61%),
 radial-gradient(1.5px 1.5px at 210px 10px,#ffe9a8 60%,transparent 61%),radial-gradient(1.2px 1.2px at 300px 40px,#fff 60%,transparent 61%)}
@@ -98,7 +98,7 @@ input.amt-in{font-size:28px;font-weight:800;text-align:right;color:var(--navy);p
 .btn.ghost{background:#fff;color:var(--navy);border:1px solid var(--navy);font-size:13.5px;padding:9px}
 .btn.s{width:auto;padding:8px 16px;font-size:13px}
 .btn:disabled{opacity:.5}
-.actbar{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--nav) + env(safe-area-inset-bottom));width:100%;max-width:430px;padding:8px 12px;background:linear-gradient(to top,var(--cream) 78%,rgba(250,246,239,0));z-index:6;display:flex;gap:8px}
+.actbar{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--nav) + var(--sab));width:100%;max-width:430px;padding:8px 12px;background:linear-gradient(to top,var(--cream) 78%,rgba(250,246,239,0));z-index:6;display:flex;gap:8px}
 .actbar .btn.ghost{flex:0 0 38%}
 .bin{width:100%!important;text-align:right;padding:7px 9px!important}
 .brow2{display:grid;grid-template-columns:88px 1fr 96px;gap:8px;align-items:center;padding:3px 0;border-bottom:1px solid var(--line)}
@@ -108,7 +108,7 @@ input.amt-in{font-size:28px;font-weight:800;text-align:right;color:var(--navy);p
 .brow2 .st.over{color:var(--minus);font-weight:700}
 .row{display:flex;align-items:center;justify-content:space-between;gap:8px}
 .empty{color:var(--sub);text-align:center;padding:8px 0;font-size:12.5px}
-.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;height:calc(var(--nav) + env(safe-area-inset-bottom));padding-bottom:env(safe-area-inset-bottom);background:#fff;border-top:1px solid #eee5d2;display:flex;justify-content:space-around;align-items:center;box-shadow:0 -3px 12px rgba(31,56,100,.08);z-index:7}
+.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;height:calc(var(--nav) + var(--sab));padding-bottom:var(--sab);background:#fff;border-top:1px solid #eee5d2;display:flex;justify-content:space-around;align-items:center;box-shadow:0 -3px 12px rgba(31,56,100,.08);z-index:7}
 .nav .item{text-align:center;font-size:10.5px;color:#9aa3b2;width:64px;height:100%;border:0;background:none;font-family:inherit}
 .nav .item .ic{font-size:19px;display:block;line-height:1.2;margin-bottom:1px}
 .nav .item.on{color:var(--navy);font-weight:700}
@@ -117,8 +117,8 @@ input.amt-in{font-size:28px;font-weight:800;text-align:right;color:var(--navy);p
 .sk{background:linear-gradient(90deg,#efe9dd 25%,#f7f2e8 50%,#efe9dd 75%);background-size:200% 100%;animation:sk 1.2s infinite;border-radius:8px}
 @keyframes sk{from{background-position:200% 0}to{background-position:-200% 0}}
 .sk.d{background:linear-gradient(90deg,rgba(255,255,255,.12) 25%,rgba(255,255,255,.25) 50%,rgba(255,255,255,.12) 75%);background-size:200% 100%}
-.toast{position:fixed;left:50%;bottom:calc(var(--nav) + 12px + env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--navy);color:#fff;padding:9px 14px;border-radius:20px;font-size:13px;z-index:9;max-width:92%;display:flex;gap:12px;align-items:center;white-space:nowrap}
-.toast.hi{bottom:calc(var(--nav) + 76px + env(safe-area-inset-bottom))}
+.toast{position:fixed;left:50%;bottom:calc(var(--nav) + 12px + var(--sab));transform:translateX(-50%);background:var(--navy);color:#fff;padding:9px 14px;border-radius:20px;font-size:13px;z-index:9;max-width:92%;display:flex;gap:12px;align-items:center;white-space:nowrap}
+.toast.hi{bottom:calc(var(--nav) + 76px + var(--sab))}
 .toast.err{background:var(--minus)}
 .toast button{background:none;border:0;color:var(--gold);font:inherit;font-weight:700;text-decoration:underline;padding:0}
 </style>
@@ -132,7 +132,7 @@ input.amt-in{font-size:28px;font-weight:800;text-align:right;color:var(--navy);p
   var CFG = window.KAKEIBO || {};
   var ICON = { C01: '🍚', C02: '🧴', C03: '🚃', C04: '📱', C05: '🏠', C06: '💡', C07: '🏥', C08: '🛡️', C09: '🎮', C10: '📚', C11: '📦' };
   var S = { auth: 'checking', authErr: '', authId: '', canSetup: false, pwOpen: false, tab: 'home', month: null, data: null, loading: true, error: '', busy: false, toast: null,
-    confirmDel: null, fresh: false, misuzuOpen: false, memoOpen: false, toastTok: 0, budgetEdit: {}, accForm: null, setEdit: { minLife: null, safe: null },
+    confirmDel: null, fresh: false, misuzuOpen: false, memoOpen: false, toastTok: 0, budgetEdit: {}, accForm: null, imp: null, setEdit: { minLife: null, safe: null },
     form: { type: '支出', kubun: '家計', acc: '', toAcc: '', cat: '', date: '', amount: '', payee: '', memo: '' } };
   var NAV = [['home', '🏠', 'ホーム'], ['budget', '📊', '予算'], ['input', '＋', ''], ['tx', '📝', '取引'], ['acc', '🏦', '口座']];
 
@@ -153,7 +153,7 @@ input.amt-in{font-size:28px;font-weight:800;text-align:right;color:var(--navy);p
     });
   }
   function clearLocal() { try { localStorage.removeItem('kk_token'); localStorage.removeItem('kk_cache'); } catch (e) {} }
-  function sessionOut(msg) { clearLocal(); S.data = null; S.auth = 'login'; S.authErr = msg || ''; S.busy = false; draw(); }
+  function sessionOut(msg) { clearLocal(); S.data = null; S.imp = null; S.auth = 'login'; S.authErr = msg || ''; S.busy = false; draw(); }
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function yen(n) { return (n < 0 ? '−' : '') + '¥' + Math.abs(n).toLocaleString('ja-JP'); }
   function errText(e) { return (e && e.message ? e.message : String(e)).replace(/^Error:\s*/, ''); }
@@ -325,6 +325,7 @@ input.amt-in{font-size:28px;font-weight:800;text-align:right;color:var(--navy);p
     h += '<div class="card"><div class="ch"><h2>手元資金の設定</h2></div><div class="two"><div><label style="margin-top:0">生活費の最低ライン（月額・円）</label><input id="minLife" type="text" inputmode="numeric" placeholder="例：250000" value="' + esc(ml) + '"></div>' +
       '<div><label style="margin-top:0">安心ライン（◯カ月分）</label><input id="safeMonths" type="text" inputmode="numeric" value="' + esc(sm) + '"></div></div>' +
       '<div class="row" style="margin-top:8px"><span class="sub">ホームの「生活費◯カ月分」とバーに使います</span><button class="btn ghost s" data-act="saveSet">保存</button></div></div>';
+    h += viewImport();
     h += '<div class="card"><div class="ch"><h2>アカウント</h2></div><div class="row" style="gap:8px"><button class="btn ghost" data-act="logout">ログアウト</button><button class="btn ghost" data-act="pwOpen">パスワード変更</button></div>';
     if (S.pwOpen) h += '<form id="pwForm" autocomplete="on"><input type="text" name="username" autocomplete="username" style="display:none" value="">' +
       '<label>いまのパスワード</label><input id="pwOld" type="password" autocomplete="current-password"><label>新しいパスワード（12文字以上）</label><input id="pwNew" type="password" autocomplete="new-password">' +
@@ -473,6 +474,9 @@ input.amt-in{font-size:28px;font-weight:800;text-align:right;color:var(--navy);p
     }
     else if (act === 'cancelAcc') { S.accForm = null; draw(); }
     else if (act === 'saveAcc') saveAcc();
+    else if (act === 'impClose') { S.imp = null; draw(); }
+    else if (act === 'impRun') impRun();
+    else if (act === 'impAdjust') impAdjust();
     else if (act === 'saveSet') {
       var g = function (id) { var e = document.getElementById(id); return e ? e.value : ''; };
       call('apiSaveSettings', { minLife: g('minLife'), safeMonths: g('safeMonths') })
@@ -494,6 +498,155 @@ input.amt-in{font-size:28px;font-weight:800;text-align:right;color:var(--navy);p
         toast('保存しました：' + label + ' ' + yen(+amt), false, r && r.id);
         return load();
       }).catch(function (e) { S.busy = false; draw(); toast(errText(e), true); });
+  }
+
+
+  // ───── CSV取り込み（defaultbook形式） ─────
+  var IMP_DEFAULT = {
+    '支|食費': 'e:C01', '支|日用品': 'e:C02', '支|美容': 'e:C02', '支|衣類': 'e:C02', '支|タバコ': 'e:C02', '支|交通費': 'e:C03',
+    '支|通信費': 'e:C04', '支|サブスク': 'e:C04', '支|お住まい': 'e:C05', '支|水道・光熱': 'e:C06', '支|医療費': 'e:C07', '支|医療': 'e:C07',
+    '支|社会保険料': 'e:C08', '支|レジャー': 'e:C09', '支|パチンコ': 'e:C09', '支|競馬': 'e:C09', '支|競馬(負け)': 'e:C09', '支|デート': 'e:C09',
+    '支|交際費': 'e:C09', '支|ゲーム': 'e:C09', '支|マンガ': 'e:C09', '支|銭湯(サウナ)': 'e:C09', '支|書籍': 'e:C10', '支|奨学金': 'e:C10',
+    '支|税金': 'e:C11', '支|睡眠': 'e:C11', '支|宿泊': 'e:C11', '支|配送': 'e:C11', '支|振替手数料': 'e:C11',
+    '支|借入金返済': 'skip', '支|カード支払い': 'skip', '支|会議費': 'skip', '支|同友会会費': 'skip', '支|税理士費用': 'skip', '支|ITサービス': 'skip', '支|仕事用品': 'skip',
+    '収|副業': 'i:副収入', '収|売上': 'i:副収入', '収|給与': 'i:家計', '収|パチ勝ち': 'i:家計', '収|競馬': 'i:家計', '収|返還': 'i:家計'
+  };
+  var IMP_FLAG = { '交通費': 1, '奨学金': 1, '宿泊': 1, '睡眠': 1, '給与': 1, '売上': 1, '返還': 1, '借入金返済': 1, 'カード支払い': 1, '会議費': 1, '同友会会費': 1, '税理士費用': 1, 'ITサービス': 1, '仕事用品': 1 };
+  var IMP_BATCH = 300;
+
+  function parseCsv(text) {
+    var rows = [], row = [], f = '', q = false, i = 0, c;
+    if (text.charCodeAt(0) === 0xFEFF) text = text.slice(1);
+    for (; i < text.length; i++) {
+      c = text[i];
+      if (q) { if (c === '"') { if (text[i + 1] === '"') { f += '"'; i++; } else q = false; } else f += c; }
+      else if (c === '"') q = true;
+      else if (c === ',') { row.push(f); f = ''; }
+      else if (c === '\n') { row.push(f); rows.push(row); row = []; f = ''; }
+      else if (c !== '\r') f += c;
+    }
+    if (f !== '' || row.length) { row.push(f); rows.push(row); }
+    return rows;
+  }
+  function decodeCsv(buf) {
+    try { return new TextDecoder('utf-8', { fatal: true }).decode(buf); }
+    catch (e) { return new TextDecoder('shift_jis').decode(buf); }
+  }
+  // 戻り値: { rows:[{key,date,type,amount,cat,memo,created,mk}], invalid, groups:{mk:{kind,cat,n,sum}}, from, to }
+  function readImport(text) {
+    var tbl = parseCsv(text), head = tbl[0] || [], idx = {};
+    head.forEach(function (h, i) { idx[h.trim()] = i; });
+    ['日付', 'カテゴリ', '金額', '収支区分', 'UUID'].forEach(function (k) { if (idx[k] === undefined) throw new Error('この形式のCSVではありません（「' + k + '」列がありません）'); });
+    var out = { rows: [], invalid: 0, groups: {}, from: '', to: '' };
+    for (var r = 1; r < tbl.length; r++) {
+      var x = tbl[r];
+      if (x.length === 1 && x[0] === '') continue;
+      var d = String(x[idx['日付']] || '').trim(), kind = String(x[idx['収支区分']] || '').trim(), amt = Number(String(x[idx['金額']] || '').replace(/,/g, ''));
+      var cur = idx['通貨'] === undefined ? 'JPY' : String(x[idx['通貨']] || 'JPY').trim();
+      var key = String(x[idx['UUID']] || '').trim();
+      if (!/^\d{8}$/.test(d) || (kind !== '支' && kind !== '収') || !(amt > 0) || Math.floor(amt) !== amt || cur !== 'JPY' || !key) { out.invalid++; continue; }
+      var date = d.slice(0, 4) + '-' + d.slice(4, 6) + '-' + d.slice(6, 8), cat = String(x[idx['カテゴリ']] || '').trim() || '（未分類）', mk = kind + '|' + cat;
+      out.rows.push({ key: key, date: date, type: kind === '支' ? '支出' : '収入', amount: amt, cat: cat, memo: String(x[idx['メモ']] || '').trim().slice(0, 200), created: String(x[idx['最終更新']] || '').trim(), mk: mk });
+      var g = out.groups[mk] || (out.groups[mk] = { kind: kind, cat: cat, n: 0, sum: 0 }); g.n++; g.sum += amt;
+      if (!out.from || date < out.from) out.from = date;
+      if (!out.to || date > out.to) out.to = date;
+    }
+    return out;
+  }
+  function impDefault(mk, g) {
+    var saved = (store('kk_impmap') || {})[mk];
+    if (saved) return saved;
+    return IMP_DEFAULT[mk] || (g.kind === '支' ? 'e:C11' : 'i:家計');
+  }
+  function impSelect(mk, g, cur) {
+    var o = '', cats = S.data.categories.filter(function (c) { return c.active; });
+    if (g.kind === '支') {
+      o += '<optgroup label="家計の支出">' + cats.map(function (c) { return '<option value="e:' + c.id + '"' + (cur === 'e:' + c.id ? ' selected' : '') + '>' + esc(c.name) + '</option>'; }).join('') + '</optgroup>';
+      o += '<optgroup label="副業の経費">' + cats.map(function (c) { return '<option value="x:' + c.id + '"' + (cur === 'x:' + c.id ? ' selected' : '') + '>' + esc(c.name) + '</option>'; }).join('') + '</optgroup>';
+    } else {
+      o += '<option value="i:家計"' + (cur === 'i:家計' ? ' selected' : '') + '>家計の収入</option><option value="i:副収入"' + (cur === 'i:副収入' ? ' selected' : '') + '>副収入</option>';
+    }
+    return '<select data-imp="' + esc(mk) + '">' + o + '<option value="skip"' + (cur === 'skip' ? ' selected' : '') + '>取り込まない</option></select>';
+  }
+  function impStart(file) {
+    var rd = new FileReader();
+    rd.onload = function () {
+      try {
+        var r = readImport(decodeCsv(rd.result));
+        if (!r.rows.length) throw new Error('取り込める行がありませんでした');
+        var cash = S.data.accounts.filter(function (a) { return a.active && a.type === '現金'; })[0] || S.data.accounts.filter(function (a) { return a.active; })[0];
+        var map = {}; Object.keys(r.groups).forEach(function (mk) { map[mk] = impDefault(mk, r.groups[mk]); });
+        S.imp = { data: r, map: map, acc: cash ? cash.id : '', name: file.name, progress: null, done: null };
+        draw();
+      } catch (e) { toast(errText(e), true); }
+    };
+    rd.onerror = function () { toast('ファイルを読めませんでした', true); };
+    rd.readAsArrayBuffer(file);
+  }
+  function impPlan() {
+    var m = S.imp, rows = [], skip = 0;
+    m.data.rows.forEach(function (r) {
+      var v = m.map[r.mk];
+      if (!v || v === 'skip') { skip++; return; }
+      var p = v.split(':'), o = { key: r.key, date: r.date, type: r.type, amount: r.amount, memo: r.memo, created: r.created, cat: '', kubun: '家計' };
+      if (p[0] === 'e') o.cat = p[1]; else if (p[0] === 'x') { o.cat = p[1]; o.kubun = '副収入経費'; } else if (p[0] === 'i') o.kubun = p[1];
+      rows.push(o);
+    });
+    return { rows: rows, skip: skip };
+  }
+  function impRun() {
+    var m = S.imp, plan = impPlan(), total = { added: 0, duplicate: 0, invalid: 0, errors: [] }, i = 0;
+    if (!m.acc) { toast('取り込み先の口座を選んでください', true); return; }
+    if (!plan.rows.length) { toast('取り込む行がありません', true); return; }
+    var saved = store('kk_impmap') || {}; Object.keys(m.map).forEach(function (k) { saved[k] = m.map[k]; }); store('kk_impmap', saved);
+    S.busy = true; m.progress = { n: 0, of: plan.rows.length }; draw();
+    (function next() {
+      if (i >= plan.rows.length) {
+        S.busy = false; m.progress = null; m.done = { added: total.added, duplicate: total.duplicate, invalid: total.invalid, skip: plan.skip, errors: total.errors };
+        toast('取り込み完了：' + total.added + '件を追加'); load(); return;
+      }
+      call('apiImportTransactions', { source: 'defaultbook', acc: m.acc, rows: plan.rows.slice(i, i + IMP_BATCH) }).then(function (r) {
+        total.added += r.added; total.duplicate += r.duplicate; total.invalid += r.invalid; total.errors = total.errors.concat(r.errors || []).slice(0, 5);
+        i += IMP_BATCH; m.progress.n = Math.min(i, plan.rows.length); draw(); next();
+      }).catch(function (e) {
+        S.busy = false; m.progress = null; m.done = { added: total.added, duplicate: total.duplicate, invalid: total.invalid, skip: plan.skip, errors: total.errors, fail: errText(e) };
+        draw(); toast('途中で止まりました：' + errText(e) + '（もう一度実行すると続きから取り込めます）', true); if (total.added) load();
+      });
+    })();
+  }
+  function impAdjust() {
+    var m = S.imp, a = S.data.accounts.filter(function (x) { return x.id === m.acc; })[0], raw = val('impReal').replace(/[^\d-]/g, '');
+    if (!a || raw === '' || raw === '-') { toast('実際の残高を入力してください', true); return; }
+    var init = a.initial + (Number(raw) - a.balance);
+    S.busy = true; draw();
+    call('apiSaveAccount', { id: a.id, name: a.name, type: a.type, initial: String(init), closing: a.closing === '' ? '' : String(a.closing), payDay: a.payDay === '' ? '' : String(a.payDay), payAcc: a.payAcc, active: a.active })
+      .then(function () { S.busy = false; toast('初期残高を調整し、残高を ' + yen(Number(raw)) + ' に合わせました'); return load(); })
+      .catch(function (e) { S.busy = false; draw(); toast(errText(e), true); });
+  }
+  function viewImport() {
+    var m = S.imp, h = '<div class="card"><div class="ch"><h2>CSV取り込み</h2>' + (m ? '<button class="btn ghost s" data-act="impClose">閉じる</button>' : '') + '</div>';
+    if (!m) {
+      return h + '<div class="sub" style="margin-bottom:8px">以前の家計簿アプリ（defaultbook形式）のCSVを取り込みます。同じ行は二重に入りません。</div>' +
+        '<label class="btn ghost" style="display:block;text-align:center;margin:0">CSVファイルを選ぶ<input id="impFile" type="file" accept=".csv,text/csv,text/plain" style="display:none"></label></div>';
+    }
+    var d = m.data, plan = impPlan(), keys = Object.keys(d.groups).sort(function (a, b) { return d.groups[a].kind === d.groups[b].kind ? d.groups[b].n - d.groups[a].n : (d.groups[a].kind === '支' ? -1 : 1); });
+    h += '<div class="sub">' + esc(m.name) + '：' + d.rows.length + '件（' + d.from + ' 〜 ' + d.to + '）' + (d.invalid ? '／読めない行 ' + d.invalid + '件' : '') + '</div>';
+    h += '<label>取り込み先の口座</label><select id="impAcc">' + S.data.accounts.filter(function (a) { return a.active; }).map(function (a) { return '<option value="' + esc(a.id) + '"' + (m.acc === a.id ? ' selected' : '') + '>' + esc(a.name) + '</option>'; }).join('') + '</select>';
+    h += '<div class="sub" style="margin:10px 0 4px">カテゴリの振り分け（⚠は会社・立替・借入と混ざっていないか確認してください）</div>';
+    keys.forEach(function (mk) {
+      var g = d.groups[mk];
+      h += '<div class="row" style="padding:5px 0;gap:6px"><div style="flex:1;min-width:0"><div class="t" style="font-size:13px">' + (IMP_FLAG[g.cat] ? '⚠ ' : '') + esc(g.kind === '支' ? '' : '【収入】') + esc(g.cat) + '</div><div class="sub" style="font-size:11px">' + g.n + '件 ・ ' + yen(g.sum) + '</div></div><div style="flex:0 0 46%">' + impSelect(mk, g, m.map[mk]) + '</div></div>';
+    });
+    h += '<div class="sub" style="margin-top:8px">取り込む ' + plan.rows.length + '件 ／ 取り込まない ' + plan.skip + '件</div>';
+    if (m.progress) h += '<div class="sub" style="margin-top:6px">取り込み中… ' + m.progress.n + ' / ' + m.progress.of + '</div>';
+    h += '<button class="btn gold" data-act="impRun" style="margin-top:10px"' + (S.busy ? ' disabled' : '') + '>' + (m.done ? 'もう一度実行（重複は入りません）' : 'この内容で取り込む') + '</button>';
+    if (m.done) {
+      h += '<div class="alert" style="margin-top:10px">追加 ' + m.done.added + '件 ／ 重複 ' + m.done.duplicate + '件 ／ 対象外 ' + m.done.skip + '件 ／ エラー ' + m.done.invalid + '件' + (m.done.fail ? '<br>' + esc(m.done.fail) : '') + (m.done.errors.length ? '<br>' + m.done.errors.map(esc).join('<br>') : '') + '</div>';
+      var a = S.data.accounts.filter(function (x) { return x.id === m.acc; })[0];
+      if (a) h += '<label>実際の残高に合わせる（いまのアプリ上の残高 ' + yen(a.balance) + '）</label><input id="impReal" type="text" inputmode="numeric" placeholder="いま財布にある金額（円）">' +
+        '<div class="sub" style="margin:4px 0">入れると「初期残高」を自動で調整します。取引は増えません。</div><button class="btn ghost" data-act="impAdjust"' + (S.busy ? ' disabled' : '') + '>残高を合わせる</button>';
+    }
+    return h + '</div>';
   }
 
   function saveAcc() {
@@ -522,6 +675,9 @@ input.amt-in{font-size:28px;font-weight:800;text-align:right;color:var(--navy);p
     var id = ev.target.id, f = S.form;
     if (id === 'acc') f.acc = ev.target.value;
     else if (id === 'toAcc') f.toAcc = ev.target.value;
+    else if (id === 'impFile') { var fl = ev.target.files && ev.target.files[0]; if (fl) impStart(fl); }
+    else if (id === 'impAcc' && S.imp) S.imp.acc = ev.target.value;
+    else if (ev.target.getAttribute && ev.target.getAttribute('data-imp') && S.imp) { S.imp.map[ev.target.getAttribute('data-imp')] = ev.target.value; draw(); }
     else if (id === 'aType' && S.accForm) {
       var g = function (i) { var e = document.getElementById(i); return e ? e.value : null; };
       if (g('aName') !== null) S.accForm.name = g('aName');
