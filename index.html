@@ -297,11 +297,12 @@ input.amt-in{font-size:28px;font-weight:800;text-align:right;color:var(--navy);p
     return '<div class="actbar"><button class="btn ghost" data-act="suggest">3カ月平均を提案</button><button class="btn gold" data-act="saveBudget"' + (S.busy ? ' disabled' : '') + '>予算を保存</button></div>';
   }
 
+  function typeLabel(t) { return t === '電子マネー' ? 'PayPay・電子マネー' : t; }
   function viewAcc() {
     var d = S.data, h = '<div class="card"><div class="ch"><h2>口座一覧</h2>' + (S.accForm ? '' : '<button class="btn ghost s" data-act="newAcc">＋ 口座を追加する</button>') + '</div>';
     if (!d.accounts.length) h += '<div class="empty">口座が未登録です</div>';
     d.accounts.forEach(function (a) {
-      h += '<div class="tx" data-act="editAcc" data-id="' + esc(a.id) + '" style="cursor:pointer"><div class="mid"><div class="t">' + esc(a.name) + (a.active ? '' : '（無効）') + '</div><div class="d">' + esc(a.type) +
+      h += '<div class="tx" data-act="editAcc" data-id="' + esc(a.id) + '" style="cursor:pointer"><div class="mid"><div class="t">' + esc(a.name) + (a.active ? '' : '（無効）') + '</div><div class="d">' + esc(typeLabel(a.type)) +
         (a.type === 'カード' ? ' ・ 締め' + (a.closing || '-') + '日／引落' + (a.payDay || '-') + '日' : '') + '</div></div>' +
         '<div class="right"><div class="amt' + (a.balance < 0 ? ' minus' : '') + '">' + yen(a.balance) + '</div>' + (a.type === 'カード' ? '<div class="d" style="font-size:10.5px;color:var(--sub)">引落前残高</div>' : '') + '</div></div>';
     });
@@ -310,7 +311,7 @@ input.amt-in{font-size:28px;font-weight:800;text-align:right;color:var(--navy);p
     if (f) {
       h += '<div class="card"><div class="ch"><h2>' + (f.id ? '口座を編集' : '口座を追加') + '</h2></div>' +
         '<div class="two"><div><label style="margin-top:0">名称</label><input id="aName" type="text" value="' + esc(f.name) + '"></div>' +
-        '<div><label style="margin-top:0">種別</label><select id="aType">' + ['現金', '銀行', 'カード', '電子マネー'].map(function (t) { return '<option' + (f.type === t ? ' selected' : '') + '>' + t + '</option>'; }).join('') + '</select></div></div>' +
+        '<div><label style="margin-top:0">種別</label><select id="aType">' + ['現金', 'カード', '電子マネー', '銀行'].map(function (t) { return '<option value="' + t + '"' + (f.type === t ? ' selected' : '') + '>' + typeLabel(t) + '</option>'; }).join('') + '</select></div></div>' +
         '<label>初期残高（円。カードは0）</label><input id="aInit" type="text" inputmode="numeric" value="' + esc(f.initial) + '">';
       if (f.type === 'カード') {
         var banks = d.accounts.filter(function (a) { return a.type === '銀行' && a.active; });
@@ -467,7 +468,7 @@ input.amt-in{font-size:28px;font-weight:800;text-align:right;color:var(--navy);p
       call('apiSaveBudgets', S.month, items).then(function () { S.budgetEdit = {}; S.busy = false; toast('予算を保存しました'); return load(); })
         .catch(function (e) { S.busy = false; draw(); toast(errText(e), true); });
     }
-    else if (act === 'newAcc') { S.accForm = { id: '', name: '', type: '銀行', initial: '', closing: '', payDay: '', payAcc: '', active: true }; draw(); }
+    else if (act === 'newAcc') { S.accForm = { id: '', name: '', type: '現金', initial: '', closing: '', payDay: '', payAcc: '', active: true }; draw(); }
     else if (act === 'editAcc') {
       var a = S.data.accounts.filter(function (x) { return x.id === el.getAttribute('data-id'); })[0];
       if (a) { S.accForm = { id: a.id, name: a.name, type: a.type, initial: String(a.initial), closing: String(a.closing), payDay: String(a.payDay), payAcc: a.payAcc, active: a.active }; draw(); window.scrollTo(0, document.body.scrollHeight); }
