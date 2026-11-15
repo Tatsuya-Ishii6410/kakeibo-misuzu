@@ -1,6 +1,6 @@
 /* 画面の枠だけをキャッシュする Service Worker。データ通信（GASへのPOST）は一切触らない。
    画面を更新したら VERSION を上げる（上げないと、次の次の起動まで古い画面が出る） */
-var VERSION = 'kakeibo-v3';
+var VERSION = 'kakeibo-v4';
 var SHELL = ['./', 'index.html', 'config.js', 'manifest.webmanifest', 'avatar.webp', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png'];
 
 self.addEventListener('install', function (e) {
